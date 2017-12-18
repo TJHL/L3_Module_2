@@ -32,10 +32,10 @@ public class Message {
 			*/
 			String encrypted ="";
 			for(int i =0; i<Written.length();i++) {
-				encrypted+=(char)((Written.charAt(i)+6)*(2*(Written.charAt(i)-4)));
+				encrypted+=(char)((Written.charAt(i)+6)*(8));
 			}
 			
-			//DONT USE PARABOLA OR POLYNOMIALS IN ENCODING
+			//DONT USE PARABOLAS OR POLYNOMIALS IN ENCODING
 			
 			fw.write(encrypted);
 				
