@@ -2,6 +2,9 @@ package intro_to_file_io;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -18,8 +21,9 @@ public class To_Do_List implements ActionListener{
 	JButton remove = new JButton("Remove Task");
 	JButton save = new JButton("Save");
 	JButton load = new JButton("Load");
-	String b ="";
-	
+	String b = "";
+	String d = "";
+	String e = "";
 	public static void main(String[] args) {
 		To_Do_List a = new To_Do_List();	
 
@@ -49,15 +53,19 @@ public class To_Do_List implements ActionListener{
 			System.out.println("Task added");
 		}
 		if(e.getSource() == remove) {
-			JOptionPane.showInputDialog("Imput a task to remove");
+		d=JOptionPane.showInputDialog("Imput a task to remove")+"\n";
+		String[] delete = b.split(d);
+		b="";
+		for (int i = 0; i < delete.length; i++) {
+		b=b+delete[i];
+		}
+	
 			System.out.println("Task removed");
-			
-			
 		}
 		if(e.getSource() == save) {
 			System.out.println("Saved");
 			try {
-				FileWriter fw = new FileWriter("src/intro_to_file_io/TodoList.txt", true);
+				FileWriter fw = new FileWriter("src/intro_to_file_io/TodoList.txt");
 				fw.write(b);
 				fw.close();
 			} catch (IOException f) {
@@ -65,8 +73,8 @@ public class To_Do_List implements ActionListener{
 			}
 		}
 		if(e.getSource() == load) {
-			System.out.println("Loaded");
-			
+			System.out.println("Loaded-NOT!!");
+				b=b;
 		}
 	
 		
