@@ -24,6 +24,8 @@ public class To_Do_List implements ActionListener{
 	String b = "";
 	String d = "";
 	String e = "";
+	String fn = "";
+	String currentFile ="TodoList";
 	public static void main(String[] args) {
 		To_Do_List a = new To_Do_List();	
 
@@ -65,7 +67,7 @@ public class To_Do_List implements ActionListener{
 		if(e.getSource() == save) {
 			System.out.println("Saved");
 			try {
-				FileWriter fw = new FileWriter("src/intro_to_file_io/TodoList.txt");
+				FileWriter fw = new FileWriter("src/intro_to_file_io/"+currentFile+".txt",true);
 				fw.write(b);
 				fw.close();
 			} catch (IOException f) {
@@ -73,11 +75,13 @@ public class To_Do_List implements ActionListener{
 			}
 		}
 		if(e.getSource() == load) {
-			System.out.println("Loaded-NOT!!");
-				b=b;
-		}
+			fn=JOptionPane.showInputDialog("Input a file name to load\n(ex., to load 'src/intro_to_file_io/TodoList.txt', enter 'TodoList') ");
+			
+			currentFile=fn;
+			System.out.println("Loaded");
 	
-		
+				
+		}
 	}
 
 }
